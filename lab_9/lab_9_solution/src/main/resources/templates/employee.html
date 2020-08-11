@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+<!--    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>-->
+<!--    <script type="text/javascript" src="/js/ajax.js"/>">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
+    <link rel="stylesheet" href="/css/rest.css"></head>
+<body>
+<h1>Add Employee</h1>
+    <form id="employeeForm" action="#"  th:object="${employee}" method="post">
+
+
+        <table cellpadding="0" cellspacing="0" border="1" class="GridOne">
+            <tr>
+        <p>
+                <td><label>First Name</label></td><td><input type="text" id="firstname" th:field="*{firstName}"></td>
+        <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" th:errorclass="fieldError">Incorrect firstName</p>
+        </p>
+            </tr>
+            <tr>
+            <p>
+           <td> <label>Last Name</label></td><td><input type="text" id="lastname" th:field="*{lastName}"></td>
+        <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" th:errorclass="fieldError">Incorrect lastName</p>
+        </p>
+        </tr>
+            <tr>
+        <p>
+            <td><label>Email</label></td><td><input type="text"  id="email" th:field="*{email}"></td>
+        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:errorclass="fieldError">Incorrect email</p>
+        </p>
+            </tr>
+            <tr>
+            <td colspan="2" align="center"> <input type="button" value="Ajax Submit" onclick="makeAjaxCall();"></td>
+            <tr>
+        </table>
+<!--        <div id="errors" style="display:none; color: red;" >-->
+<!--            <ul th:if="${#fields.hasErrors('*')}">-->
+<!--                <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>-->
+<!--            </ul>-->
+<!--        </div>-->
+</form>
+<div id="errors" style="display:none" >
+    <h1 style="color: red; align-content: center;">Errors</h1>
+</div>
+
+<div id="formInput" style="display:none" > </div>
+</body>
+</html>

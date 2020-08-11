@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" th="http://www.thymeleaf.org/" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link type="text/css" rel="stylesheet" href="css/main.css">
+<body>
+<div id="global">
+    <h4>The employee details have been saved.</h4>
+    <p>
+    <h5>Details:</h5>
+    <table border="1" align="center">
+        <thead>
+        <th>S.N</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Birthdate</th>
+        <th>Actions</th>
+        </thead>
+        <tr th:each="employee,sn:${employees}">
+            <td th:text="${sn.index+1}"/>
+            <td th:text="${employee.firstName}"/>
+            <td th:text="${employee.lastName}"/>
+            <td th:text="${employee.birthDate}"/>
+
+            <td><a th:href="@{/edit/{id}(id=${employee.id})}">Edit</a></td>
+            <td><a th:href="@{/delete/{id}(id=${employee.id})}">Delete</a></td>
+            <td><a th:href="@{/employee-detail/{id}(id=${employee.id})}">Details</a></td>
+
+        <tr th:each="item,iterator : ${items}">
+
+        </tr>
+        </tr>
+    </table>
+
+</div>
+</body>
+</html>
